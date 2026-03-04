@@ -386,7 +386,6 @@ MonoBehaviour:
   decel: 45
   linearDamping: 3
   everySeconds: 10
-  rocketSprite: {fileID: 0}
 --- !u!114 &1081636074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,13 +477,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c708961024cb9045982d571cdbf5b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
+  obstaclePrefabs:
+  - {fileID: 3147953062752560557, guid: 724390b744e4c724f9eb971be07cd7e3, type: 3}
+  - {fileID: 4931429109492091125, guid: 5d839191a90c3374eb7eba8b53c84a26, type: 3}
+  - {fileID: 3843279030840311471, guid: fcb22f5411f29be43b2b44a139618bce, type: 3}
+  pickupPrefabs:
+  - {fileID: 7815858181241225940, guid: bb2abad2bdee80c4182751cab71daa6b, type: 3}
+  - {fileID: 3438323844267699368, guid: b5c54b923890e1c4286a84c5d9ea700c, type: 3}
+  - {fileID: 7771051779649068102, guid: fdfde3c82f368d948b13f835b32f6d51, type: 3}
   obstaclePrefab: {fileID: 3147953062752560557, guid: 724390b744e4c724f9eb971be07cd7e3, type: 3}
   pickupPrefab: {fileID: 7815858181241225940, guid: bb2abad2bdee80c4182751cab71daa6b, type: 3}
-  obstaclePrefabs: []
-  pickupPrefabs: []
   xRange: 6
   ySpawn: 7
   minObstacleXSpacing: 1.5
+  patternXStep: 1.1
+  patternYStep: 0.65
   everySeconds: 999
 --- !u!4 &1276589145
 Transform:

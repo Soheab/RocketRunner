@@ -127,7 +127,8 @@ public class Spawner : MonoBehaviour
 
     private void SpawnObstacleBurst()
     {
-        GameObject fallback = PickRandomPrefab(obstaclePrefabs, obstaclePrefab);
+        bool allowLaser = SettingsData.DifficultyIndex == 2;
+        GameObject fallback = PickRandomObstaclePrefab(allowLaser);
         if (fallback == null)
         {
             Debug.LogWarning("Spawner: no obstacle prefab assigned");
@@ -150,7 +151,7 @@ public class Spawner : MonoBehaviour
 
         for (int i = 0; i < burstCount; i++)
         {
-            GameObject prefab = PickRandomPrefab(obstaclePrefabs, obstaclePrefab);
+            GameObject prefab = PickRandomObstaclePrefab(allowLaser);
             if (prefab == null) prefab = fallback;
 
             Vector2 off = offsets[i];
@@ -195,6 +196,36 @@ public class Spawner : MonoBehaviour
 
         return fallback;
     }
+
+    private GameObject PickRandomObstaclePrefab(bool allowLaser)
+    {
+        var candidates = new List<GameObject>();
+
+        if (obstaclePrefabs != null && obstaclePrefabs.Length > 0)
+        {
+            for (int i = 0; i < obstaclePrefabs.Length; i++)
+            {
+                GameObject prefab = obstaclePrefabs[i];
+                if (prefab == null) continue;
+                if (!allowLaser && IsLaserObstaclePrefab(prefab)) continue;
+                candidates.Add(prefab);
+            }
+        }
+
+        if (candidates.Count > 0)
+            return candidates[UnityEngine.Random.Range(0, candidates.Count)];
+
+        if (obstaclePrefab != null && (allowLaser || !IsLaserObstaclePrefab(obstaclePrefab)))
+            return obstaclePrefab;
+
+        return null;
+    }
+
+    private static bool IsLaserObstaclePrefab(GameObject prefab)
+    {
+        return prefab != null && prefab.name.ToLowerInvariant().Contains("laser");
+    }
+
     private float GetSpacedSpawnX(List<float> usedX)
     {
         for (int attempt = 0; attempt < 8; attempt++)

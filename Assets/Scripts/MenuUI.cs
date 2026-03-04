@@ -57,6 +57,8 @@ public class MenuUI : MonoBehaviour
                 winScore.value = SettingsData.WinScore.ToString();
 
             if (string.IsNullOrWhiteSpace(winScore.value)) winScore.value = "20";
+
+
         }
 
         startBtn.clicked += () =>

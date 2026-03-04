@@ -18,6 +18,13 @@ public static class SettingsData
     public static float HardExtraPressureAfterSeconds = 30f;
     public static float HardSpawnStepMultiplierAfterPressure = 1f;
 
+
+    public static string GetScoreLabelText(int? scoreOverride = null)
+    {
+        int currentScore = scoreOverride ?? (GameManager.Instance != null ? GameManager.Instance.Score : 0);
+        return "Score: " + currentScore + " / " + (WinScore == 0 ? "Tijdgebaseerd" : WinScore.ToString());
+    }
+
     public static void ApplyDifficulty()
     {
         switch (DifficultyIndex)
@@ -26,29 +33,29 @@ public static class SettingsData
                 SpawnStartRate = 1.6f;
                 SpawnMinRate = 0.9f;
                 SpeedMultiplier = 0.85f;
-                SpawnRateStepPer10s = 0.04f;
+                SpawnRateStepPer10s = 0.05f;
                 PlayerSpeedStepPer10s = 0.15f;
                 ObstacleSpeedStepPer10s = 0.08f;
-                PickupChance = 0.5f;
-                MaxConsecutiveObstacles = 1;
+                PickupChance = 0.6f;
+                MaxConsecutiveObstacles = 3;
                 ObstacleBurstMin = 1;
-                ObstacleBurstMax = 2;
+                ObstacleBurstMax = 3;
                 HardExtraPressureAfterSeconds = 30f;
                 HardSpawnStepMultiplierAfterPressure = 1f;
                 break;
             case 2: // moeilijk
-                SpawnStartRate = 0.9f;
-                SpawnMinRate = 0.25f;
-                SpeedMultiplier = 1.35f;
-                SpawnRateStepPer10s = 0.12f;
+                SpawnStartRate = 1.0f;
+                SpawnMinRate = 0.35f;
+                SpeedMultiplier = 1.25f;
+                SpawnRateStepPer10s = 0.1f;
                 PlayerSpeedStepPer10s = 0.08f;
-                ObstacleSpeedStepPer10s = 0.16f;
-                PickupChance = 0.2f;
-                MaxConsecutiveObstacles = 4;
-                ObstacleBurstMin = 3;
-                ObstacleBurstMax = 4;
-                HardExtraPressureAfterSeconds = 30f;
-                HardSpawnStepMultiplierAfterPressure = 1.35f;
+                ObstacleSpeedStepPer10s = 0.14f;
+                PickupChance = 0.35f;
+                MaxConsecutiveObstacles = 3;
+                ObstacleBurstMin = 2;
+                ObstacleBurstMax = 3;
+                HardExtraPressureAfterSeconds = 35f;
+                HardSpawnStepMultiplierAfterPressure = 1.2f;
                 break;
             default:
                 SpawnStartRate = 1.05f;
@@ -57,7 +64,7 @@ public static class SettingsData
                 SpawnRateStepPer10s = 0.09f;
                 PlayerSpeedStepPer10s = 0.12f;
                 ObstacleSpeedStepPer10s = 0.12f;
-                PickupChance = 0.3f;
+                PickupChance = 0.45f;
                 MaxConsecutiveObstacles = 3;
                 ObstacleBurstMin = 2;
                 ObstacleBurstMax = 3;

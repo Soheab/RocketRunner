@@ -10,7 +10,7 @@ public class EndUI : MonoBehaviour
         var root = doc.rootVisualElement;
 
         root.Q<Label>("ResultLabel").text = EndData.ResultText;
-        root.Q<Label>("ScoreLabel").text = "Score: " + EndData.FinalScore;
+        root.Q<Label>("ScoreLabel").text = SettingsData.GetScoreLabelText(EndData.FinalScore);
 
         root.Q<Button>("RestartButton").clicked += () => SceneManager.LoadSceneAsync("Game");
         root.Q<Button>("MenuButton").clicked += () => SceneManager.LoadSceneAsync("Menu");

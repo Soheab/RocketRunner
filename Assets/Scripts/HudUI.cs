@@ -18,7 +18,7 @@ public class HudUI : MonoBehaviour
         if (GameManager.Instance == null) return;
         if (scoreLabel == null || timerLabel == null) return;
 
-        scoreLabel.text = "Score: " + GameManager.Instance.Score;
+        scoreLabel.text = SettingsData.GetScoreLabelText();
         timerLabel.text = "Time: " + Mathf.CeilToInt(GameManager.Instance.TimeLeft);
     }
 }

@@ -2,55 +2,39 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(SpriteRenderer))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float accel = 35f;
     [SerializeField] private float decel = 45f;
     [SerializeField] private float linearDamping = 3f;
     [SerializeField] private float everySeconds = 10f;
-    [SerializeField] private Sprite rocketSprite;
+
+    private Camera mainCam;
+    private float halfWidth;
+    private float halfHeight;
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private float currentMaxSpeed;
     private float difficultyTimer;
 
-    private void Reset()
-    {
-        rocketSprite = null;
-    }
-
     private void Awake()
     {
-        EnsureRocketVisual();
-
         rb = GetComponent<Rigidbody2D>();
         rb.linearDamping = Mathf.Clamp(linearDamping, 2f, 4f);
         rb.constraints |= RigidbodyConstraints2D.FreezeRotation;
         currentMaxSpeed = SettingsData.PlayerSpeed;
+
+        rb = GetComponent<Rigidbody2D>();
+        mainCam = Camera.main;
+
+        float vertExtent = mainCam.orthographicSize;
+        float horExtent = vertExtent * mainCam.aspect;
+
+        halfWidth = horExtent;
+        halfHeight = vertExtent;
     }
 
-    private void EnsureRocketVisual()
-    {
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer == null)
-            spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
-
-        if (rocketSprite == null)
-        {
-            rocketSprite = Resources.Load<Sprite>("Sprites/RocketSprite");
-            if (rocketSprite == null)
-            {
-                Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites/RocketSprite");
-                if (sprites != null && sprites.Length > 0)
-                    rocketSprite = sprites[0];
-            }
-        }
-
-        if (rocketSprite != null)
-            spriteRenderer.sprite = rocketSprite;
-    }
 
     private void Update()
     {
@@ -74,6 +58,13 @@ public class PlayerMovement : MonoBehaviour
 
         Vector2 change = Vector2.ClampMagnitude(delta, rate * Time.fixedDeltaTime);
         rb.linearVelocity += change;
+
+        Vector3 pos = transform.position;
+
+        pos.x = Mathf.Clamp(pos.x, -halfWidth + 0.5f, halfWidth - 0.5f);
+        pos.y = Mathf.Clamp(pos.y, -halfHeight + 0.5f, halfHeight - 0.5f);
+
+        transform.position = pos;
     }
 
     public void OnMove(InputAction.CallbackContext context)
