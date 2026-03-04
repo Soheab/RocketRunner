@@ -1,0 +1,10 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; padding-top: 20px;">
+        <ui:Image name="LogoImage" data-source="" source="project://database/Assets/Art/Logos/Bijlage%202%20-%20Logo.png?fileID=2800000&amp;guid=27582dbc1f9cfad4da92ee9fe525866b&amp;type=3#Bijlage 2 - Logo" style="width: 280px; height: 120px;"/>
+        <ui:DropdownField label="Moeilijkheid" name="DifficultyDropdown" choices="Makkelijk,Normaal,Moeilijk" view-data-key="" tooltip="Selecteer je moeilijkheidsgraad" enabled="true" binding-path=""/>
+        <ui:DropdownField label="Tijd" name="TimeDropdown" tooltip="Selecteer tijd"/>
+        <ui:DropdownField label="Spelersnelheid" name="SpeedDropdown" tooltip="Selecteer snelheid"/>
+        <ui:DropdownField label="Winningsscore" name="WinScoreDropdown" tooltip="0 = score-winconditie uitgeschakeld"/>
+        <ui:Button text="Start" name="StartButton" style="width: 200px; height: 45px; margin-top: 16px;"/>
+    </ui:VisualElement>
+</ui:UXML>

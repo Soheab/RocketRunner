@@ -1,0 +1,10 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center;">
+        <ui:Label text="Resultaat" name="ResultLabel" style="font-size: 48px; -unity-text-align: middle-center;"/>
+        <ui:Label text="Score: 0" name="ScoreLabel" style="font-size: 24px; -unity-text-align: middle-center;"/>
+        <ui:Button text="Opnieuw" name="RestartButton" style="margin-top: 10px; width: 180px; height: 42px;"/>
+        <ui:Button text="Menu" name="MenuButton" style="margin-top: 6px; width: 180px; height: 42px;"/>
+        <ui:Label text="Best Education" name="BrandLabel" style="font-size: 16px; margin-top: 20px;"/>
+        <ui:Label text="Wij lanceren je de toekomst in" name="SloganLabel" style="font-size: 12px; -unity-text-align: middle-center;"/>
+    </ui:VisualElement>
+</ui:UXML>

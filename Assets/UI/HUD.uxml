@@ -1,0 +1,7 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; align-items: flex-start; padding-top: 10px; padding-left: 10px;">
+        <ui:Label text="Score: 0" name="ScoreLabel" style="font-size: 20px;"/>
+        <ui:Label text="Tijd: 60s" name="TimerLabel" style="font-size: 20px;"/>
+        <ui:Label text="Best Education" name="BrandMini" style="font-size: 12px; margin-top: 10px;"/>
+    </ui:VisualElement>
+</ui:UXML>
